@@ -10,14 +10,14 @@ jobs:
     steps:
       
       - restore_cache:
-          key: angular-java-example-{{ checksum "pom.xml" }}
+          key: cache-key-{{ checksum "pom.xml" }}
       
       - run: mvn dependency:go-offline
       
       - save_cache:
           paths:
             - ~/.m2
-          key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
+          key: cache-key-{{ checksum "pom.xml" }}
 
       - run:
           name: Build
