@@ -39,19 +39,14 @@ jobs:
       - image: circleci/node:10.16.3
 
    steps:
-    - checkout:
-       path: ~/project/src/main/ui
+    - checkout       
               
     - run:
           name: install-npm-wee
-          command: npm install
-    - save_cache:
-          key: node-cache-{{ checksum "package-lock.json" }}
-          paths:
-            - ./node_modules   
+          command: cd src/main/ui && npm install   
     - run:
           name: run-app
-          command : npm start        
+          command : cd src/main/ui && npm start        
 
 
 workflows:
