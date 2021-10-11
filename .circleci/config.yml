@@ -33,8 +33,11 @@ jobs:
           path: target/users-0.0.1-SNAPSHOT.jar
  angular-build:
 
+   working_directory: ~/angular-java-example/src/main/ui
+
    docker:
       - image: circleci/node:10.16.3
+
    steps:
     - checkout
               
