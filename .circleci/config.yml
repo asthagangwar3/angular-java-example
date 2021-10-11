@@ -39,7 +39,10 @@ jobs:
     - checkout
 
     - restore_cache:
-          key: node-cache-{{ checksum "package-lock.json" }}
+          keys: 
+           - node-cache-{{ checksum "package-lock.json" }}
+           - node-cache-
+          
     - run:
           name: install-npm-wee
           command: npm install
