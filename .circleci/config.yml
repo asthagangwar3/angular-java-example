@@ -40,7 +40,7 @@ jobs:
 
     - restore_cache:
           keys: 
-           - node-cache-{{ checksum "package-lock.json" }}
+           - node-cache-{{ checksum "/src/main/ui/package-lock.json" }}
            - node-cache-
           
     - run:
@@ -51,7 +51,7 @@ jobs:
           paths:
             - ./node_modules   
     - run:
-          key: run-app
+          name: run-app
           command : npm start        
 
 
