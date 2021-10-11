@@ -10,7 +10,9 @@ jobs:
     steps:
       
       - restore_cache:
-          key: cache-key-{{ checksum "pom.xml" }}
+          keys: 
+          - cache-key-{{ checksum "pom.xml" }}
+          - cache-key-
       
       - run: mvn dependency:go-offline
       
