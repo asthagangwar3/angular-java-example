@@ -1,6 +1,5 @@
 version: 2.1
 
-
 jobs:
  
  java-build:
@@ -10,32 +9,29 @@ jobs:
     
     steps:
       
-      - checkout
-	  
-	  - restore_cache:
-          key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
-		  
-	  - run: mvn dependency:go-offline	  
-	  
-	  - save_cache:
+      - restore_cache:
+          key: angular-java-example-{{ checksum "pom.xml" }}
+      
+      - run: mvn dependency:go-offline
+      
+      - save_cache:
           paths:
             - ~/.m2
           key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
-         
+
       - run:
           name: Build
           command: mvn install
-		  
-	  - store_test_results:
+      - store_test_results:
           path: target/surefire-reports
-		  
-	  - store_artifacts:
-          path: target/java-spring-0.0.1-SNAPSHOT.jar	  
-		  
-	  - run:
-		  name: Run
-		  command: java - jar target/java-spring-0.0.1-SNAPSHOT.jar
-	
+
+      - store_artifacts:
+          path: target/java-spring-0.0.1-SNAPSHOT.jar
+          
+      - run:
+           name: Run
+           command: java - jar target/java-spring-0.0.1-SNAPSHOT.jar
+
 
 #angular-build:	
 
