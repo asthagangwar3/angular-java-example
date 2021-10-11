@@ -31,12 +31,11 @@ jobs:
 
       - store_artifacts:
           path: target/users-0.0.1-SNAPSHOT.jar
-         
-     
-angular-build:
-  docker:
+ angular-build:
+
+   docker:
       - image: circleci/node:10.16.3
-  steps:
+   steps:
     - checkout
 
     - restore_cache:
@@ -54,6 +53,10 @@ angular-build:
 
 
 workflows:
-  my_workflow_java_angular: 
+  my_workflow_java: 
     jobs:
       - java-build
+  my_workflow_angular:    
+    jobs:
+      - angular-build
+        
