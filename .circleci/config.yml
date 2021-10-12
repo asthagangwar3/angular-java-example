@@ -5,7 +5,10 @@ jobs:
  java-build:
     
     docker:
-      - image: cimg/openjdk:11.0            
+      - image: cimg/openjdk:11.0
+        auth:
+          username: $DOCKERHUB_USER
+          password: $DOCKERHUB_PASSWORD            
     
     steps:
      
