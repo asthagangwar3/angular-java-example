@@ -37,6 +37,7 @@ jobs:
 
       - run:
             docker build -t circle-ci/circleci-demo-docker:my-java-image .
+            docker run –p 8080:8080 circle-ci/circleci-demo-docker:my-java-image
 
 
              
