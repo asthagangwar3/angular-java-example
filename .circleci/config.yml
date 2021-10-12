@@ -5,7 +5,7 @@ jobs:
  java-build:
     
     docker:
-      - image: cimg/openjdk:11.0
+      - image: cimg/openjdk:11.0            
     
     steps:
      
@@ -35,13 +35,15 @@ jobs:
 
       - setup_remote_docker
 
-      - run:
-            docker build -t circle-ci/circleci-demo-docker:my-java-image .
-      - run:    
-            docker run –p 8080:8080 circle-ci/circleci-demo-docker:my-java-image
-
-
-             
+      
+      - run: 
+          name: Publish Docker Image to Docker Hub
+          command: |
+                  echo “$DOCKERHUB_PASSWORD” | docker login -u “$DOCKERHUB_USERNAME” — password-stdin
+                  docker build -t asthadocker/docker_repo:circleci .
+                  docker push asthadocker/docker_repo:circleci:latest
+      
+            
  
  angular-build:
 
