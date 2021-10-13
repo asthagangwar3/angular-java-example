@@ -43,8 +43,8 @@ jobs:
           name: Publish Docker Image to Docker Hub
           command: |
                   echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USER" --password-stdin
-                  docker build -t asthadocker/docker_repo:circleci .
-                  docker push asthadocker/docker_repo:circleci  
+                  docker build -t kaniskapadhi/docker_repo:circleci .
+                  docker push kaniskapadhi/docker_repo:circleci  
       
             
  
